@@ -54,6 +54,8 @@ interface Props {
   innerRef: (node: HTMLElement | null) => void
   onClose: () => void
   onChangePreferences: () => void
+  onAcceptAll: () => void
+  onDenyAll: () => void
   content: React.ReactNode
   subContent: React.ReactNode
   backgroundColor: string
@@ -68,6 +70,8 @@ export default class Banner extends PureComponent<Props> {
       innerRef,
       onClose,
       onChangePreferences,
+      onAcceptAll,
+      onDenyAll,
       content,
       subContent,
       backgroundColor,
@@ -78,6 +82,10 @@ export default class Banner extends PureComponent<Props> {
       <Root innerRef={innerRef} backgroundColor={backgroundColor} textColor={textColor}>
         <Content>
           <P>{content}</P>
+
+          <button onClick={onAcceptAll}>Accept all cookies</button>
+          <button onClick={onDenyAll}>Deny all cookies</button>
+
           <P>
             <button type="button" onClick={onChangePreferences}>
               {subContent}

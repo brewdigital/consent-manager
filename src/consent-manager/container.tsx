@@ -186,6 +186,26 @@ const Container: React.FC<ContainerProps> = props => {
     props.resetPreferences()
   }
 
+  const handleAcceptAll = () => {
+    props.setPreferences({
+      advertising: true,
+      marketingAndAnalytics: true,
+      functional: true
+    })
+
+    props.saveConsent()
+  }
+
+  const handleDenyAll = () => {
+    props.setPreferences({
+      advertising: false,
+      marketingAndAnalytics: false,
+      functional: false
+    })
+
+    props.saveConsent()
+  }
+
   return (
     <div>
       {showBanner && props.isConsentRequired && props.newDestinations.length > 0 && (
@@ -193,6 +213,8 @@ const Container: React.FC<ContainerProps> = props => {
           innerRef={current => (banner = { current })}
           onClose={onClose}
           onChangePreferences={() => toggleDialog(true)}
+          onAcceptAll={handleAcceptAll}
+          onDenyAll={handleDenyAll}
           content={props.bannerContent}
           subContent={props.bannerSubContent}
           textColor={props.bannerTextColor}
