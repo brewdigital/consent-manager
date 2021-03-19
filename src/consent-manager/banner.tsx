@@ -56,6 +56,8 @@ interface Props {
   onChangePreferences: () => void
   onAcceptAll: () => void
   onDenyAll: () => void
+  showAcceptAllButton: boolean
+  showDenyAllButton: boolean
   content: React.ReactNode
   subContent: React.ReactNode
   backgroundColor: string
@@ -72,6 +74,8 @@ export default class Banner extends PureComponent<Props> {
       onChangePreferences,
       onAcceptAll,
       onDenyAll,
+      showAcceptAllButton,
+      showDenyAllButton,
       content,
       subContent,
       backgroundColor,
@@ -83,8 +87,8 @@ export default class Banner extends PureComponent<Props> {
         <Content>
           <P>{content}</P>
 
-          <button onClick={onAcceptAll}>Accept all cookies</button>
-          <button onClick={onDenyAll}>Deny all cookies</button>
+          {showAcceptAllButton && <button onClick={onAcceptAll}>Accept all cookies</button>}
+          {showDenyAllButton && <button onClick={onDenyAll}>Deny all cookies</button>}
 
           <P>
             <button type="button" onClick={onChangePreferences}>

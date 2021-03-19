@@ -30,6 +30,8 @@ interface ContainerProps {
   setPreferences: (prefs: CategoryPreferences) => void
   saveConsent: (newPreferences?: CategoryPreferences, shouldReload?: boolean) => void
   resetPreferences: () => void
+  showAcceptAllButton: boolean
+  showDenyAllButton: boolean
   closeBehavior?: CloseBehavior | CloseBehaviorFunction
   destinations: Destination[]
   customCategories?: CustomCategories | undefined
@@ -215,6 +217,8 @@ const Container: React.FC<ContainerProps> = props => {
           onChangePreferences={() => toggleDialog(true)}
           onAcceptAll={handleAcceptAll}
           onDenyAll={handleDenyAll}
+          showAcceptAllButton={props.showAcceptAllButton}
+          showDenyAllButton={props.showDenyAllButton}
           content={props.bannerContent}
           subContent={props.bannerSubContent}
           textColor={props.bannerTextColor}
