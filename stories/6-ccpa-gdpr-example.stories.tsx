@@ -30,7 +30,7 @@ const preferencesDialogContent = (
   <div>
     <p>
       Segment uses data collected by cookies and JavaScript libraries to improve your browsing
-      experience, analyze site traffic, deliver personalized advertisements, and increase the
+      experience, analyze site traffic, deliver personalised advertisements, and increase the
       overall performance of our site.
     </p>
     <p>
@@ -95,14 +95,14 @@ const ConsentManagerExample = () => {
   const closeBehavior = inCA()
     ? _categories => caDefaultPreferences
     : inEU()
-      ? CloseBehavior.DENY
-      : CloseBehavior.ACCEPT
+    ? CloseBehavior.DENY
+    : CloseBehavior.ACCEPT
 
   const initialPreferences = inCA()
     ? caDefaultPreferences
     : inEU()
-      ? euDefaultPreferences
-      : undefined
+    ? euDefaultPreferences
+    : undefined
 
   return (
     <Pane>

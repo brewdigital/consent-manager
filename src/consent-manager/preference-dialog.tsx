@@ -252,7 +252,7 @@ export default class PreferenceDialog extends PureComponent<PreferenceDialogProp
                         other websites.
                       </p>
                       <p className={hideOnMobile}>
-                        For example, we may serve you a personalized ad based on the pages you visit
+                        For example, we may serve you a personalised ad based on the pages you visit
                         on our site.
                       </p>
                     </td>

@@ -169,7 +169,7 @@ All the options are supported. The callback function also receives these exports
     var bannerSubContent = 'You can change your preferences at any time.'
     var preferencesDialogTitle = 'Website Data Collection Preferences'
     var preferencesDialogContent =
-      'We use data collected by cookies and JavaScript libraries to improve your browsing experience, analyze site traffic, deliver personalized advertisements, and increase the overall performance of our site.'
+      'We use data collected by cookies and JavaScript libraries to improve your browsing experience, analyze site traffic, deliver personalised advertisements, and increase the overall performance of our site.'
     var cancelDialogTitle = 'Are you sure you want to cancel?'
     var cancelDialogContent =
       'Your preferences have not been saved. By continuing to use our website, you՚re agreeing to our Website Data Collection Policy.'
@@ -366,7 +366,7 @@ export default function() {
   const bannerSubContent = 'You can change your preferences at any time.'
   const preferencesDialogTitle = 'Website Data Collection Preferences'
   const preferencesDialogContent =
-    'We use data collected by cookies and JavaScript libraries to improve your browsing experience, analyze site traffic, deliver personalized advertisements, and increase the overall performance of our site.'
+    'We use data collected by cookies and JavaScript libraries to improve your browsing experience, analyze site traffic, deliver personalised advertisements, and increase the overall performance of our site.'
   const cancelDialogTitle = 'Are you sure you want to cancel?'
   const cancelDialogContent =
     'Your preferences have not been saved. By continuing to use our website, you՚re agreeing to our Website Data Collection Policy.'

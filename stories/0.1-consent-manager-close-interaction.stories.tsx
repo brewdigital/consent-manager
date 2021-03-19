@@ -26,7 +26,7 @@ const preferencesDialogContent = (
   <div>
     <p>
       Segment uses data collected by cookies and JavaScript libraries to improve your browsing
-      experience, analyze site traffic, deliver personalized advertisements, and increase the
+      experience, analyze site traffic, deliver personalised advertisements, and increase the
       overall performance of our site.
     </p>
     <p>
