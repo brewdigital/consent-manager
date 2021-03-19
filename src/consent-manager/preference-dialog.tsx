@@ -206,7 +206,7 @@ export default class PreferenceDialog extends PureComponent<PreferenceDialogProp
                     <td>
                       <p>
                         To understand user behavior in order to provide you with a more relevant
-                        browsing experience or personalize the content on our site.
+                        browsing experience or personalise the content on our site.
                       </p>
                       <p className={hideOnMobile}>
                         For example, we collect information about which pages you visit to help us
@@ -248,7 +248,7 @@ export default class PreferenceDialog extends PureComponent<PreferenceDialogProp
                     <RowHeading scope="row">Advertising</RowHeading>
                     <td>
                       <p>
-                        To personalize and measure the effectiveness of advertising on our site and
+                        To personalise and measure the effectiveness of advertising on our site and
                         other websites.
                       </p>
                       <p className={hideOnMobile}>
