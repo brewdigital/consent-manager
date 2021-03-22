@@ -26,7 +26,7 @@
   "scripts": {
     "test": "jest src/__tests__",
     "prepublishOnly": "yarn run clean && yarn run build",
-    "postpublish": "yarn build-storybook && yarn deploy-storybook -- --existing-output-dir=storybook-static",
+    "postpublish": "echo yarn build-storybook && echo yarn deploy-storybook -- --existing-output-dir=storybook-static",
     "dev": "concurrently 'yarn build-standalone --watch' 'yarn start-storybook -s ./ -p 9009'",
     "build-commonjs": "tsc --outDir commonjs --module CommonJS --inlineSourceMap",
     "build-esm": "tsc --module es2015 --outDir esm --inlineSourceMap",
@@ -34,7 +34,7 @@
     "build": "concurrently --names 'commonjs,esm,standalone' 'yarn run build-commonjs' 'yarn run build-esm' 'yarn run build-standalone'",
     "watch": "tsc --module es2015 --outDir esm --watch",
     "clean": "rm -rf commonjs esm standalone storybook-static types",
-    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook": "echo storybook-to-ghpages",
     "standalone-hash": "shasum -b -a 256 standalone/consent-manager.js | xxd -r -p | base64",
     "build-storybook": "yarn build-standalone && build-storybook && cp -r ./standalone ./storybook-static/standalone",
     "lint": "eslint 'src/**/*.{ts,tsx}'"
