@@ -5,13 +5,15 @@ import fontStyles from './font-styles'
 const Root = styled<{ backgroundColor: string; textColor: string }, 'div'>('div')`
   ${fontStyles};
   position: relative;
-  padding: 8px;
-  padding-right: 40px;
-  background: ${props => props.backgroundColor};
+  padding: 25px 75px;
   color: ${props => props.textColor};
   text-align: center;
   font-size: 12px;
   line-height: 1.3;
+  background-color: ${props => props.backgroundColor};
+  background-image: url('https://static.adaptavistassets.com/cookie-star-grey.svg');
+  background-repeat: no-repeat;
+  background-position: 15px center;
 `
 
 const Content = styled('div')`
@@ -29,6 +31,10 @@ const Content = styled('div')`
 
 const P = styled('p')`
   margin: 0;
+  font-family: 'Museo Sans', system-ui, serif;
+  line-height: 1.6;
+  font-size: 16px;
+  text-align: left;
   &:not(:last-child) {
     margin-bottom: 6px;
   }
@@ -101,7 +107,7 @@ export default class Banner extends PureComponent<Props> {
           )}
           {showDenyAllButton && <ActionButton onClick={onDenyAll}>Deny all cookies</ActionButton>}
 
-          <P>
+          <P hidden>
             <button type="button" onClick={onChangePreferences}>
               {subContent}
             </button>

@@ -38,8 +38,8 @@ export const DefaultButton = styled('button')`
 
 export const GreenButton = styled('button')`
   ${baseStyles};
-  background-color: #47b881;
-  background-image: linear-gradient(to top, #3faf77, #47b881);
+  background-color: #f63;
+  background-image: linear-gradient(to top, #e05629, #f63);
   box-shadow: inset 0 0 0 1px rgba(67, 90, 111, 0.204), inset 0 -1px 1px 0 rgba(67, 90, 111, 0.204);
   color: #fff;
   &:hover {

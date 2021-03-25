@@ -94,12 +94,12 @@ const Content = styled('div')`
   }
 
   a {
-    color: #47b881;
+    color: #f63;
     &:hover {
-      color: #64c395;
+      color: #f63;
     }
     &:active {
-      color: #248953;
+      color: #f63;
     }
   }
 `
