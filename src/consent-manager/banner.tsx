@@ -15,8 +15,7 @@ const Root = styled<{ backgroundColor: string; textColor: string }, 'div'>('div'
 `
 
 const Content = styled('div')`
-  a,
-  button {
+  a {
     display: inline;
     padding: 0;
     border: none;
@@ -48,6 +47,16 @@ const CloseButton = styled('button')`
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
+`
+
+const ActionButton = styled('button')`
+  border-radius: 100px;
+  background: white;
+  padding: 6px 14px;
+  color: #010a27;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 5px;
 `
 
 interface Props {
@@ -87,8 +96,10 @@ export default class Banner extends PureComponent<Props> {
         <Content>
           <P>{content}</P>
 
-          {showAcceptAllButton && <button onClick={onAcceptAll}>Accept all cookies</button>}
-          {showDenyAllButton && <button onClick={onDenyAll}>Deny all cookies</button>}
+          {showAcceptAllButton && (
+            <ActionButton onClick={onAcceptAll}>Accept all cookies</ActionButton>
+          )}
+          {showDenyAllButton && <ActionButton onClick={onDenyAll}>Deny all cookies</ActionButton>}
 
           <P>
             <button type="button" onClick={onChangePreferences}>
