@@ -17,6 +17,15 @@ const Root = styled<{ backgroundColor: string; textColor: string }, 'div'>('div'
 `
 
 const Content = styled('div')`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 56rem) {
+    flex-direction: column;
+  }
+
   a {
     display: inline;
     padding: 0;
@@ -62,7 +71,19 @@ const ActionButton = styled('button')`
   color: #010a27;
   text-decoration: none;
   font-weight: 500;
-  margin-top: 5px;
+`
+
+const LeftCol = styled('div')`
+  flex: 1;
+`
+
+const RightCol = styled('div')`
+  margin-left: 15px;
+
+  @media (max-width: 56rem) {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 `
 
 interface Props {
@@ -100,12 +121,20 @@ export default class Banner extends PureComponent<Props> {
     return (
       <Root innerRef={innerRef} backgroundColor={backgroundColor} textColor={textColor}>
         <Content>
-          <P>{content}</P>
+          <LeftCol>
+            <P>{content}</P>
+          </LeftCol>
 
-          {showAcceptAllButton && (
-            <ActionButton onClick={onAcceptAll}>Accept all cookies</ActionButton>
+          {(showAcceptAllButton || showDenyAllButton) && (
+            <RightCol>
+              {showAcceptAllButton && (
+                <ActionButton onClick={onAcceptAll}>Accept all cookies</ActionButton>
+              )}
+              {showDenyAllButton && (
+                <ActionButton onClick={onDenyAll}>Deny all cookies</ActionButton>
+              )}
+            </RightCol>
           )}
-          {showDenyAllButton && <ActionButton onClick={onDenyAll}>Deny all cookies</ActionButton>}
 
           <P hidden>
             <button type="button" onClick={onChangePreferences}>
