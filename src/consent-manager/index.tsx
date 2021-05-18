@@ -27,7 +27,8 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     cancelDialogTitle: 'Are you sure you want to cancel?',
     defaultDestinationBehavior: 'disable',
     showAcceptAllButton: false,
-    showDenyAllButton: false
+    showDenyAllButton: false,
+    hideOverlay: false
   }
 
   render() {
@@ -50,6 +51,7 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
       cdnHost,
       showAcceptAllButton,
       showDenyAllButton,
+      hideOverlay,
       onError
     } = this.props
 
@@ -107,6 +109,7 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
               havePreferencesChanged={havePreferencesChanged}
               defaultDestinationBehavior={defaultDestinationBehavior}
               workspaceAddedNewDestinations={workspaceAddedNewDestinations}
+              hideOverlay={hideOverlay}
             />
           )
         }}

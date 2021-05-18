@@ -50,6 +50,7 @@ interface ContainerProps {
   cancelDialogContent: React.ReactNode
   workspaceAddedNewDestinations?: boolean
   defaultDestinationBehavior?: DefaultDestinationBehavior
+  hideOverlay: boolean
 }
 
 function normalizeDestinations(destinations: Destination[]) {
@@ -209,7 +210,7 @@ const Container: React.FC<ContainerProps> = props => {
   }
 
   return (
-    <div>
+    <div id="cookie-banner">
       {showBanner && props.isConsentRequired && props.newDestinations.length > 0 && (
         <Banner
           innerRef={current => (banner = { current })}
@@ -223,6 +224,7 @@ const Container: React.FC<ContainerProps> = props => {
           subContent={props.bannerSubContent}
           textColor={props.bannerTextColor}
           backgroundColor={props.bannerBackgroundColor}
+          hideOverlay={props.hideOverlay}
         />
       )}
 

@@ -97,4 +97,5 @@ export interface ConsentManagerProps {
   cdnHost?: string
   showAcceptAllButton: boolean
   showDenyAllButton: boolean
+  hideOverlay: boolean
 }

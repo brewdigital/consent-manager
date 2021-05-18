@@ -86,6 +86,16 @@ const RightCol = styled('div')`
   }
 `
 
+const Overlay = styled('div')`
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  opacity: 0.75;
+  left: 0;
+  top: 0;
+`
+
 interface Props {
   innerRef: (node: HTMLElement | null) => void
   onClose: () => void
@@ -98,6 +108,7 @@ interface Props {
   subContent: React.ReactNode
   backgroundColor: string
   textColor: string
+  hideOverlay: boolean
 }
 
 export default class Banner extends PureComponent<Props> {
@@ -115,38 +126,57 @@ export default class Banner extends PureComponent<Props> {
       content,
       subContent,
       backgroundColor,
-      textColor
+      textColor,
+      hideOverlay
     } = this.props
 
     return (
-      <Root innerRef={innerRef} backgroundColor={backgroundColor} textColor={textColor}>
-        <Content>
-          <LeftCol>
-            <P>{content}</P>
-          </LeftCol>
+      <>
+        <Root
+          className="cb-container"
+          innerRef={innerRef}
+          backgroundColor={backgroundColor}
+          textColor={textColor}
+        >
+          <Content className="cb-content">
+            <LeftCol className="cb-description">
+              <P>{content}</P>
+            </LeftCol>
 
-          {(showAcceptAllButton || showDenyAllButton) && (
-            <RightCol>
-              {showAcceptAllButton && (
-                <ActionButton onClick={onAcceptAll}>Accept all cookies</ActionButton>
-              )}
-              {showDenyAllButton && (
-                <ActionButton onClick={onDenyAll}>Deny all cookies</ActionButton>
-              )}
-            </RightCol>
-          )}
+            {(showAcceptAllButton || showDenyAllButton) && (
+              <RightCol>
+                {showAcceptAllButton && (
+                  <ActionButton className="cb-accept-all-btn" onClick={onAcceptAll}>
+                    Accept all cookies
+                  </ActionButton>
+                )}
+                {showDenyAllButton && (
+                  <ActionButton className="cb-deny-all-btn" onClick={onDenyAll}>
+                    Deny all cookies
+                  </ActionButton>
+                )}
+              </RightCol>
+            )}
 
-          <P hidden>
-            <button type="button" onClick={onChangePreferences}>
-              {subContent}
-            </button>
-          </P>
-        </Content>
+            <P hidden>
+              <button type="button" onClick={onChangePreferences}>
+                {subContent}
+              </button>
+            </P>
+          </Content>
 
-        <CloseButton type="button" title="Close" aria-label="Close" onClick={onClose}>
-          ✕
-        </CloseButton>
-      </Root>
+          <CloseButton
+            type="button"
+            className="cb-close-btn"
+            title="Close"
+            aria-label="Close"
+            onClick={onClose}
+          >
+            ✕
+          </CloseButton>
+        </Root>
+        {!hideOverlay && <Overlay className="cb-overlay" />}
+      </>
     )
   }
 }
