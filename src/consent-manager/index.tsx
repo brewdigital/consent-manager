@@ -28,7 +28,8 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     defaultDestinationBehavior: 'disable',
     showAcceptAllButton: false,
     showDenyAllButton: false,
-    hideOverlay: false
+    hideOverlay: false,
+    trackAccept: undefined
   }
 
   render() {
@@ -52,6 +53,8 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
       showAcceptAllButton,
       showDenyAllButton,
       hideOverlay,
+      trackAccept,
+      trackDeny,
       onError
     } = this.props
 
@@ -110,6 +113,8 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
               defaultDestinationBehavior={defaultDestinationBehavior}
               workspaceAddedNewDestinations={workspaceAddedNewDestinations}
               hideOverlay={hideOverlay}
+              trackAccept={trackAccept}
+              trackDeny={trackDeny}
             />
           )
         }}

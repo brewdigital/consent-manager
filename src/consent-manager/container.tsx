@@ -51,6 +51,8 @@ interface ContainerProps {
   workspaceAddedNewDestinations?: boolean
   defaultDestinationBehavior?: DefaultDestinationBehavior
   hideOverlay: boolean
+  trackAccept: () => void
+  trackDeny: () => void
 }
 
 function normalizeDestinations(destinations: Destination[]) {
@@ -145,7 +147,8 @@ const Container: React.FC<ContainerProps> = props => {
         acc[category] = false
         return acc
       }, {})
-
+      // track cookie deny from banner close button
+      props.trackDeny()
       props.setPreferences(falsePreferences)
       return props.saveConsent()
     }
@@ -165,6 +168,20 @@ const Container: React.FC<ContainerProps> = props => {
 
   const handleSave = () => {
     toggleDialog(false)
+
+    let cookiesAccepted = (): boolean => {
+      for (const property in props.preferences) {
+        if (props.preferences[property]) return true
+      }
+      return false
+    }
+
+    // track accept/deny cookies from preference dialog save button
+    if (cookiesAccepted()) {
+      props.trackAccept()
+    } else {
+      props.trackDeny()
+    }
 
     props.saveConsent()
   }
@@ -196,6 +213,8 @@ const Container: React.FC<ContainerProps> = props => {
       functional: true
     })
 
+    // track cookie acceptance from accept all button
+    props.trackAccept()
     props.saveConsent()
   }
 
@@ -206,6 +225,8 @@ const Container: React.FC<ContainerProps> = props => {
       functional: false
     })
 
+    // track cookie deny from deny all button
+    props.trackDeny()
     props.saveConsent()
   }
 

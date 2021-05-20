@@ -98,4 +98,6 @@ export interface ConsentManagerProps {
   showAcceptAllButton: boolean
   showDenyAllButton: boolean
   hideOverlay: boolean
+  trackAccept: () => void
+  trackDeny: () => void
 }
