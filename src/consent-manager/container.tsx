@@ -169,7 +169,7 @@ const Container: React.FC<ContainerProps> = props => {
   const handleSave = () => {
     toggleDialog(false)
 
-    let cookiesAccepted = (): boolean => {
+    const cookiesAccepted = (): boolean => {
       for (const property in props.preferences) {
         if (props.preferences[property]) return true
       }
