@@ -29,7 +29,18 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     showAcceptAllButton: false,
     showDenyAllButton: false,
     hideOverlay: false,
-    trackAccept: undefined
+    trackAccept: undefined,
+    trackDeny: undefined
+  }
+
+  componentDidMount() {
+    // trigger trackMount function on mount if tracking-preferences cookie does not exist
+    if (
+      !document.cookie.split(';').some(item => item.trim().startsWith('tracking-preferences=')) &&
+      typeof this.props.trackMount == 'function'
+    ) {
+      this.props.trackMount()
+    }
   }
 
   render() {

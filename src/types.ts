@@ -100,4 +100,5 @@ export interface ConsentManagerProps {
   hideOverlay: boolean
   trackAccept: () => void
   trackDeny: () => void
+  trackMount: () => void
 }
