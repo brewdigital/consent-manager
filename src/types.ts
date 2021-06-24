@@ -97,4 +97,8 @@ export interface ConsentManagerProps {
   cdnHost?: string
   showAcceptAllButton: boolean
   showDenyAllButton: boolean
+  hideOverlay: boolean
+  trackAccept: () => void
+  trackDeny: () => void
+  trackMount: () => void
 }

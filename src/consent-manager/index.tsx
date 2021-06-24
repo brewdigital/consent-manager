@@ -27,7 +27,20 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     cancelDialogTitle: 'Are you sure you want to cancel?',
     defaultDestinationBehavior: 'disable',
     showAcceptAllButton: false,
-    showDenyAllButton: false
+    showDenyAllButton: false,
+    hideOverlay: false,
+    trackAccept: undefined,
+    trackDeny: undefined
+  }
+
+  componentDidMount() {
+    // trigger trackMount function on mount if tracking-preferences cookie does not exist
+    if (
+      !document.cookie.split(';').some(item => item.trim().startsWith('tracking-preferences=')) &&
+      typeof this.props.trackMount == 'function'
+    ) {
+      this.props.trackMount()
+    }
   }
 
   render() {
@@ -50,6 +63,9 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
       cdnHost,
       showAcceptAllButton,
       showDenyAllButton,
+      hideOverlay,
+      trackAccept,
+      trackDeny,
       onError
     } = this.props
 
@@ -107,6 +123,9 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
               havePreferencesChanged={havePreferencesChanged}
               defaultDestinationBehavior={defaultDestinationBehavior}
               workspaceAddedNewDestinations={workspaceAddedNewDestinations}
+              hideOverlay={hideOverlay}
+              trackAccept={trackAccept}
+              trackDeny={trackDeny}
             />
           )
         }}
