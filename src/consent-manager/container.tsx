@@ -148,7 +148,9 @@ const Container: React.FC<ContainerProps> = props => {
         return acc
       }, {})
       // track cookie deny from banner close button
-      props.trackDeny()
+      if (typeof props.trackDeny == 'function') {
+        props.trackDeny()
+      }
       props.setPreferences(falsePreferences)
       return props.saveConsent()
     }
@@ -178,9 +180,13 @@ const Container: React.FC<ContainerProps> = props => {
 
     // track accept/deny cookies from preference dialog save button
     if (cookiesAccepted()) {
-      props.trackAccept()
+      if (typeof props.trackAccept == 'function') {
+        props.trackAccept()
+      }
     } else {
-      props.trackDeny()
+      if (typeof props.trackDeny == 'function') {
+        props.trackDeny()
+      }
     }
 
     props.saveConsent()
@@ -214,7 +220,9 @@ const Container: React.FC<ContainerProps> = props => {
     })
 
     // track cookie acceptance from accept all button
-    props.trackAccept()
+    if (typeof props.trackAccept == 'function') {
+      props.trackAccept()
+    }
     props.saveConsent()
   }
 
@@ -226,7 +234,9 @@ const Container: React.FC<ContainerProps> = props => {
     })
 
     // track cookie deny from deny all button
-    props.trackDeny()
+    if (typeof props.trackDeny == 'function') {
+      props.trackDeny()
+    }
     props.saveConsent()
   }
 
