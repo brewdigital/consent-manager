@@ -40,6 +40,7 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "@brewdigital/in-eu": "0.4.1",
     "@segment/in-regions": "^1.2.0",
     "@segment/top-domain": "^3.0.0",
     "emotion": "^9.1.2",
@@ -52,7 +53,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
-    "@segment/in-eu": "^0.3.0",
     "@storybook/addon-actions": "^5.2.3",
     "@storybook/addon-info": "^5.2.3",
     "@storybook/addon-links": "^5.2.3",

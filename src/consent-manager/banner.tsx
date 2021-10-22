@@ -172,7 +172,7 @@ export default class Banner extends PureComponent<Props> {
             aria-label="Close"
             onClick={onClose}
           >
-            ✕
+            <span dangerouslySetInnerHTML={{ __html: '&#10005;' }} />
           </CloseButton>
         </Root>
         {!hideOverlay && <Overlay className="cb-overlay" />}

@@ -5,6 +5,9 @@
 /build
 /storybook-static
 /types
+/.npmrc
+/.yarnrc
 
 # IDE
 .vscode/
+yarn-error.log
