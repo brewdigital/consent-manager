@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
+import inEU from '@brewdigital/in-eu'
 import styled from 'react-emotion'
 import fontStyles from './font-styles'
 
-const Root = styled<{ backgroundColor: string; textColor: string }, 'div'>('div')`
+const Root = styled<{ backgroundColor: string; textColor: string; inEU: boolean }, 'div'>('div')`
   ${fontStyles};
   position: relative;
   padding: 25px 75px;
@@ -10,10 +11,14 @@ const Root = styled<{ backgroundColor: string; textColor: string }, 'div'>('div'
   text-align: center;
   font-size: 12px;
   line-height: 1.3;
-  background-color: ${props => props.backgroundColor};
-  background-image: url('https://static.adaptavistassets.com/cookie-star-grey.svg');
   background-repeat: no-repeat;
   background-position: 15px center;
+  z-index: 151;
+  background-image: ${props =>
+    props.inEU
+      ? 'url("https://static.adaptavistassets.com/cookie-star-navy.svg")'
+      : 'url("https://static.adaptavistassets.com/cookie-star-grey.svg")'};
+  background-color: ${props => (props.inEU ? 'white' : props.backgroundColor)};
 `
 
 const Content = styled('div')`
@@ -49,7 +54,7 @@ const P = styled('p')`
   }
 `
 
-const CloseButton = styled('button')`
+const CloseButton = styled<{ backgroundColor: string; inEU: boolean }, 'button'>('button')`
   position: absolute;
   right: 8px;
   top: 50%;
@@ -57,11 +62,11 @@ const CloseButton = styled('button')`
   padding: 8px;
   border: none;
   background: none;
-  color: inherit;
   font: inherit;
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
+  color: ${props => (props.inEU ? props.backgroundColor : 'inherit')};
 `
 
 const ActionButton = styled('button')`
@@ -73,8 +78,22 @@ const ActionButton = styled('button')`
   font-weight: 500;
 `
 
-const LeftCol = styled('div')`
+const ActionButtonAccept = styled<{ inEU: boolean }, 'button'>('button')`
+  border-radius: 100px;
+  padding: 6px 14px;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: ${props => (props.inEU ? '#4775FF' : 'white')};
+  color: ${props => (props.inEU ? 'white' : '#010a27')};
+`
+
+const LeftCol = styled<{ backgroundColor: string; inEU: boolean }, 'div'>('div')`
   flex: 1;
+  color: ${props => (props.inEU ? props.backgroundColor : 'white')};
+  a,
+  button {
+    color: ${props => (props.inEU ? '#0033CD' : 'white')};
+  }
 `
 
 const RightCol = styled('div')`
@@ -137,18 +156,23 @@ export default class Banner extends PureComponent<Props> {
           innerRef={innerRef}
           backgroundColor={backgroundColor}
           textColor={textColor}
+          inEU={inEU()}
         >
           <Content className="cb-content">
-            <LeftCol className="cb-description">
+            <LeftCol className="cb-description" backgroundColor={backgroundColor} inEU={inEU()}>
               <P>{content}</P>
             </LeftCol>
 
             {(showAcceptAllButton || showDenyAllButton) && (
               <RightCol>
                 {showAcceptAllButton && (
-                  <ActionButton className="cb-accept-all-btn" onClick={onAcceptAll}>
+                  <ActionButtonAccept
+                    className="cb-accept-all-btn"
+                    onClick={onAcceptAll}
+                    inEU={inEU()}
+                  >
                     Accept all cookies
-                  </ActionButton>
+                  </ActionButtonAccept>
                 )}
                 {showDenyAllButton && (
                   <ActionButton className="cb-deny-all-btn" onClick={onDenyAll}>
@@ -171,6 +195,8 @@ export default class Banner extends PureComponent<Props> {
             title="Close"
             aria-label="Close"
             onClick={onClose}
+            backgroundColor={backgroundColor}
+            inEU={inEU()}
           >
             <span dangerouslySetInnerHTML={{ __html: '&#10005;' }} />
           </CloseButton>
