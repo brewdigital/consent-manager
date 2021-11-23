@@ -1,6 +1,6 @@
 {
   "name": "@brewdigital/consent-manager",
-  "version": "5.4.1",
+  "version": "5.5.0",
   "description": "Drop-in consent management plugin for analytics.js",
   "keywords": [
     "gdpr",
