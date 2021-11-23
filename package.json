@@ -12,7 +12,6 @@
     "type": "git",
     "url": "https://github.com/brewdigital/consent-manager.git"
   },
-  "license": "MIT",
   "main": "commonjs/index.js",
   "module": "esm/index.js",
   "types": "types/src/index.d.ts",

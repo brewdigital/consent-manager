@@ -39,7 +39,6 @@ module.exports = {
       `
 Consent Manager v${pkg.version}
 https://github.com/brewdigital/consent-manager
-Released under the MIT license
     `.trim()
     )
   ]

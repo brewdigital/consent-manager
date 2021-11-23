@@ -85,6 +85,8 @@ const ActionButtonAccept = styled<{ inEU: boolean }, 'button'>('button')`
   font-weight: 500;
   background-color: ${props => (props.inEU ? '#4775FF' : 'white')};
   color: ${props => (props.inEU ? 'white' : '#010a27')};
+  border: none;
+  cursor: pointer;
 `
 
 const LeftCol = styled<{ backgroundColor: string; inEU: boolean }, 'div'>('div')`
@@ -92,6 +94,14 @@ const LeftCol = styled<{ backgroundColor: string; inEU: boolean }, 'div'>('div')
   color: ${props => (props.inEU ? props.backgroundColor : 'white')};
   a,
   button {
+    display: inline;
+    padding: 0px;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
     color: ${props => (props.inEU ? '#0033CD' : 'white')};
   }
 `
@@ -152,7 +162,7 @@ export default class Banner extends PureComponent<Props> {
     return (
       <>
         <Root
-          className="cb-container"
+          className={`cb-container eu-${inEU() ? 'yes' : 'no'}`}
           innerRef={innerRef}
           backgroundColor={backgroundColor}
           textColor={textColor}
