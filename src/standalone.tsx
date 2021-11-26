@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import inEU from '@segment/in-eu'
+import inEU from '@brewdigital/in-eu'
 import inRegions from '@segment/in-regions'
 import { ConsentManager, openConsentManager, doNotTrack } from '.'
 import { ConsentManagerProps, WindowWithConsentManagerConfig, ConsentManagerInput } from './types'

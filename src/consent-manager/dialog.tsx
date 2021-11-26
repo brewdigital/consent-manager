@@ -156,7 +156,7 @@ export default class Dialog extends PureComponent<DialogProps, {}> {
             <Title id={this.titleId}>{title}</Title>
             {onCancel && (
               <HeaderCancelButton onClick={onCancel} title="Cancel" aria-label="Cancel">
-                ✕
+                <span dangerouslySetInnerHTML={{ __html: '&#10005;' }} />
               </HeaderCancelButton>
             )}
           </Header>
