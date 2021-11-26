@@ -1,0 +1,17 @@
+name: 'Create a .npmrc file for the github private repository'
+description: 'Create a .npmrc file for the github private repository'
+inputs:
+  ORG_NAME:
+    description: 'Github repository name'
+    required: true
+  NODE_AUTH_TOKEN:
+    description: 'AuthToken for github'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - run: chmod u+x ${{ github.action_path }}/authToReadPrivateNpmPackage.sh
+      shell: bash
+    - run: ${{ github.action_path }}/authToReadPrivateNpmPackage.sh
+      shell: bash
